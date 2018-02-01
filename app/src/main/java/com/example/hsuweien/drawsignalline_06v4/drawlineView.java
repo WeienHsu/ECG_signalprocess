@@ -52,7 +52,6 @@ public class drawlineView extends SurfaceView implements SurfaceHolder.Callback,
     private int LogarithmOrLinear_scale=1;    // 尺度選擇，預設線性尺度(1)
     private float Log_accuracy = 0.001f;   // Log尺度的精度，每格幾單位畫一點
 
-    //1234
 
     // touch event
     private boolean setDragEnable = false; // 開啟手指拖移畫面？
