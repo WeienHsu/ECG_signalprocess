@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_draw_time"
+        android:orderInCategory="100"
+        android:title="@string/action_draw_time"
+        app:showAsAction="never" />
+    <item
+    android:id="@+id/action_draw_freq_amp"
+    android:orderInCategory="100"
+    android:title="@string/action_draw_freq_amp"
+    app:showAsAction="never" />
+    <item
+        android:id="@+id/action_draw_freq_phase"
+        android:orderInCategory="100"
+        android:title="@string/action_draw_freq_phase"
+        app:showAsAction="never"/>
+</menu>

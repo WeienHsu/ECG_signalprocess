@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hsuweien.drawsignalline_06v4.otherActivity">
+
+    <TextView
+        android:id="@+id/draw_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/draw_title"
+        android:textSize="25sp"/>
+    <TextView
+        android:id="@+id/txt_AD_per_mV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_AD_per_mV"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/draw_title" />
+
+    <EditText
+        android:id="@+id/edtxt_AD_per_mV"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5sp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="@string/AD_per_mV_value"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/txt_AD_per_mV"
+        app:layout_constraintTop_toBottomOf="@+id/draw_title"/>
+
+    <TextView
+        android:id="@+id/txt_AD_per_mV_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_AD_per_mV_unit"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/edtxt_AD_per_mV"
+        app:layout_constraintTop_toBottomOf="@+id/draw_title"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/other_btnOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_OK" />
+
+        <Button
+            android:id="@+id/other_btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_cancel" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

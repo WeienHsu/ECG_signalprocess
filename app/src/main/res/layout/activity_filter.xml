@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hsuweien.drawsignalline_06v4.filterActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/t1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_weight="0.5"
+            android:text="@string/title1"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/chk_iir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type1_IIR"
+            android:textSize="20sp"/>
+
+        <CheckBox
+            android:id="@+id/chk_fir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type2_FIR"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/t2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.5"
+            android:layout_marginLeft="10sp"
+            android:text="@string/title2"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="41dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t2">
+
+        <CheckBox
+            android:id="@+id/chk_bas"
+            android:layout_width="185sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:text="@string/baseline_filter"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/ch1_edtxt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/aver_point"
+            android:text="@string/ch1_edtxt1_text"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/content1">
+
+        <CheckBox
+            android:id="@+id/chk_low"
+            android:layout_width="185sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:text="@string/Lowpass_filter"
+            android:textSize="20sp"
+            android:layout_weight="0"/>
+
+        <EditText
+            android:id="@+id/ch2_edtxt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/cutoff_freq"
+            android:textSize="20sp"
+            android:text="@string/ch2_edtxt1_text"/>
+
+        <EditText
+            android:id="@+id/ch2_edtxt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/filter_order"
+            android:textSize="20sp"
+            android:text="@string/ch2_edtxt2_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0sp"
+        app:layout_constraintTop_toBottomOf="@+id/content2"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/chk_high"
+            android:layout_width="185sp"
+            android:layout_height="wrap_content"
+            android:text="@string/highpass_filter"
+            android:layout_marginLeft="10sp"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/ch3_edtxt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/cutoff_freq"
+            android:textSize="20sp"
+            android:text="@string/ch3_edtxt1_text"/>
+        <EditText
+            android:id="@+id/ch3_edtxt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/filter_order"
+            android:textSize="20sp"
+            android:text="@string/ch3_edtxt2_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0sp"
+        app:layout_constraintTop_toBottomOf="@+id/content3"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/chk_torch"
+            android:layout_width="185sp"
+            android:layout_height="wrap_content"
+            android:text="@string/notch_filter"
+            android:layout_marginLeft="10sp"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/ch4_edtxt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/cutoff_freq"
+            android:textSize="20sp"
+            android:text="@string/ch4_edtxt1_text"/>
+        <EditText
+            android:id="@+id/ch4_edtxt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/filter_width"
+            android:textSize="20sp"
+            android:text="@string/ch4_edtxt2_text"/>
+        <EditText
+            android:id="@+id/ch4_edtxt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/filter_order"
+            android:textSize="20sp"
+            android:text="@string/ch4_edtxt3_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="230dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content4">
+
+        <Button
+            android:id="@+id/filter_btnOK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_OK" />
+
+        <Button
+            android:id="@+id/filter_btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_cancel" />
+    </LinearLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>

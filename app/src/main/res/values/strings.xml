@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">DrawSignalLine_06v4</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_draw_time">時域訊號</string>
+    <string name="action_draw_freq_amp">頻域訊號(強度)</string>
+    <string name="action_draw_freq_phase">頻域訊號(相位)</string>
+
+    <string name="txt1">繪圖</string>
+    <string name="btn_draw_time_domain">時域</string>
+    <string name="btn_draw_freq_domain">頻域</string>
+    <string name="btn_OK">確定</string>
+    <string name="btn_cancel">取消</string>
+
+    <!-- ori_data 頁面 -->
+    <string name="ori_btn1">讀取檔案</string>
+    <string name="ori_edtxt1">要讀取檔案</string>
+    <string name="ori_edtxt1_text">People2_sr500</string>
+    <string name="ori_edtxt2">輸入採樣率</string>
+    <string name="ori_edtxt2_text">500</string>
+    <string name="ori_txt1">狀態: </string>
+    <string name="read_fail">讀取失敗，請確認檔案是否存在</string>
+    <string name="read_success">讀取成功!</string>
+    <string name="ori_readfile">讀取檔案：</string>
+    <string name="samplerate">採樣頻率：</string>
+
+    <!-- fft 頁面 -->
+    <string name="fft_length">FFT長度：</string>
+    <string name="edtxt2_text">0</string>
+
+    <!-- filter頁面 -->
+    <string name="title1">Filter種類</string>
+    <string name="type1_IIR">IIR濾波</string>
+    <string name="type2_FIR">FIR濾波</string>
+    <string name="title2">參數設定</string>
+    <string name="baseline_filter">基線濾波</string>
+    <string name="Lowpass_filter">低通濾波</string>
+    <string name="highpass_filter">高通濾波</string>
+    <string name="notch_filter">帶陷濾波</string>
+
+    <string name="cutoff_freq">截止頻率</string>
+    <string name="central_freq">中心頻率</string>
+    <string name="filter_order">階數</string>
+    <string name="aver_point">平均點數</string>
+    <string name="filter_width">帶陷寬度</string>
+
+    <string name="ch1_edtxt1_text">250</string>
+    <string name="ch2_edtxt1_text">150</string>
+    <string name="ch2_edtxt2_text">16</string>
+    <string name="ch3_edtxt1_text">0.05</string>
+    <string name="ch3_edtxt2_text">16</string>
+    <string name="ch4_edtxt1_text">50</string>
+    <string name="ch4_edtxt2_text">4</string>
+    <string name="ch4_edtxt3_text">4</string>
+
+    <!-- other頁面-->
+    <string name="draw_title">時域繪圖設定</string>
+    <string name="txt_AD_per_mV">設定每AD值對應mV:</string>
+    <string name="AD_per_mV_value">1.5</string>
+    <string name="txt_AD_per_mV_unit">mV</string>
+
+</resources>
