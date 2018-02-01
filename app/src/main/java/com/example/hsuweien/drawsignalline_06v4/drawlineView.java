@@ -59,6 +59,8 @@ public class drawlineView extends SurfaceView implements SurfaceHolder.Callback,
     private VelocityTracker mVelocityTracker = null;
 
 
+    // bababa
+
     public drawlineView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
