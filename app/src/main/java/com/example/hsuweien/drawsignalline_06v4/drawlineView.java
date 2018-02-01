@@ -58,8 +58,6 @@ public class drawlineView extends SurfaceView implements SurfaceHolder.Callback,
     private float old_x1=0, old_dist=0; //第一次觸碰時的座標
     private VelocityTracker mVelocityTracker = null;
 
-    // 我在測試branch~
-
     public drawlineView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
