@@ -193,7 +193,7 @@ public class drawlineView extends SurfaceView implements SurfaceHolder.Callback,
                             // 如果顯示的點到尾巴（所有data減去起始畫圖點 < 畫面可顯示的範圍）...則停止拖曳
                             if ((get_data.length - START_DRAW_POINT) > DRAW_DATASIZE) {
                                 // 如果: 總長-起始長度 > 可顯示區域
-                                START_DRAW_POINT += (int)(Math.abs(velocityX)*0.1);
+                                START_DRAW_POINT += (int)(Math.abs(velocityX)*0.05);
                                 // 避免起始點加可顯示區域已經大於最大長度（拉太快）
                                 if(START_DRAW_POINT+DRAW_DATASIZE > get_data.length)
                                     START_DRAW_POINT = get_data.length-(int)DRAW_DATASIZE;
@@ -204,7 +204,7 @@ public class drawlineView extends SurfaceView implements SurfaceHolder.Callback,
                             }
                         } else if (x1 > old_x1) {
                             // 如果往左已經沒有data，則停止拖曳
-                            START_DRAW_POINT -= (int)(Math.abs(velocityX)*0.1);
+                            START_DRAW_POINT -= (int)(Math.abs(velocityX)*0.05);
                             if(START_DRAW_POINT < 0)
                                 START_DRAW_POINT = 0;
                             //drawTime_flag = true;

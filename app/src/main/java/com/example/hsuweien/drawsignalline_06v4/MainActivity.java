@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -61,9 +62,9 @@ public class MainActivity extends AppCompatActivity
     // draw something
     boolean draw_fft_flag = false;
     boolean draw_time_domain_flag = false;
-    boolean Draw_amp = false, Draw_phase = false;
-    private int chooseScale_linearORlog = 2;    // 頻譜的尺度選擇: 1:線性軸, 2:對數軸
-
+    private int FreqScaleChoose = 2;    // 頻譜的尺度選擇: 1:線性軸, 2:對數軸
+    boolean IsDrag = false; //控制繪圖是否可以拖移
+    int FreqScale = 1;  //1:線性, 2:對數
 
     /*
     * 子線程更新UI的方法（避免Memory Leak）
@@ -105,10 +106,48 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         mdrawlineview = findViewById(R.id.draw);
+
         mscale_btn = findViewById(R.id.scale_btn);
+        ScaleBTN(); // 選擇尺度按鈕的相關設定
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    // scale btn control
+    public void ScaleBTN(){
+        mscale_btn.setBackgroundResource(R.drawable.shape_scale_btn_noenable);  //初始按鈕佈局
+        mscale_btn.setText("Linear Scalse");
+        FreqScaleChoose=1;
+        mscale_btn.setEnabled(false);
+        mscale_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(FreqScaleChoose == 1){
+                    // 目前是線性圖，執行”對數“繪圖
+                    mscale_btn.setBackgroundResource(R.drawable.shape_scale_btn_logarithm);  //初始按鈕佈局
+                    mscale_btn.setText("Logarithm Scale");
+                    FreqScaleChoose = 2;
+                    FreqScale = 2;
+                    IsDrag = false;
+                }
+                else if(FreqScaleChoose == 2){
+                    // 目前是對數圖，執行“線性”繪圖
+                    mscale_btn.setBackgroundResource(R.drawable.shape_scale_btn_linear);  //初始按鈕佈局
+                    mscale_btn.setText("Linear Scalse");
+                    FreqScaleChoose = 1;
+                    FreqScale = 1;
+                    IsDrag = true;
+                }
+
+                // 繪圖
+                Thread t = new MyThread2();
+                draw_fft_flag = true;
+                t.start();
+            }
+        });
+
     }
 
     @Override
@@ -134,7 +173,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
     // 觸發繪圖寫在這
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -147,6 +185,7 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_draw_time) {
             mscale_btn.setBackgroundResource(R.drawable.shape_scale_btn_noenable);
+            mscale_btn.setEnabled(false);
 
             Thread t = new MyThread1();
             draw_time_domain_flag = true;
@@ -154,19 +193,30 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         else if(id == R.id.action_draw_freq_amp){
-            mscale_btn.setBackgroundResource(R.drawable.shape_scale_btn_linear);
+            // 尺度按鈕開啟
+            mscale_btn.setEnabled(true);
+            if(FreqScaleChoose == 1){
+                mscale_btn.setBackgroundResource(R.drawable.shape_scale_btn_linear);
+                mscale_btn.setText("Linear Scalse");
+            }
+            else if(FreqScaleChoose == 2){
+                mscale_btn.setBackgroundResource(R.drawable.shape_scale_btn_logarithm);
+                mscale_btn.setText("Logarithm Scalse");
+            }
 
             Thread t = new MyThread2();
             draw_fft_flag = true;
-            Draw_amp = true;    // 畫fft強度
             t.start();
             return true;
         }
         else if(id == R.id.action_draw_freq_phase){
+            mscale_btn.setBackgroundResource(R.drawable.shape_scale_btn_noenable);
+            mscale_btn.setEnabled(false);
+
+
             // 繪製相位
             Thread t = new MyThread3();
             draw_fft_flag = true;
-            Draw_phase = true;  //  畫fft相位
             t.start();
             return true;
         }
@@ -367,19 +417,16 @@ public class MainActivity extends AppCompatActivity
 
             addFreqPoint_amp(tmp);
             draw_fft_flag = false;  // 停止繪圖
-
-            Draw_amp = false;
-            Draw_phase = false;
         }
     }
     private void addFreqPoint_amp(final float[] point){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                // (fft數據, 採樣率, FFT長度, 最小顯示範圍, 最大顯示範圍, 相位圖或強度圖, 線性或對數尺度)
                 Log.d(LOG_TAG, "addFreqPoint_amp");
-                mdrawlineview.setFreqScaleIsLogarithm(2);   // 選擇尺度
-                mdrawlineview.setDragEnable(true, 2);   // 頻域開啟拖曳
+                mdrawlineview.setFreqScaleIsLogarithm(FreqScale);   // 選擇尺度
+                mdrawlineview.setDragEnable(IsDrag, 2);   // 頻域開啟拖曳
+                // (fft數據, 採樣率, FFT長度, 最小顯示範圍, 最大顯示範圍, 相位圖或強度圖, 線性或對數尺度)
                 mdrawlineview.addFreqPoint(point, ORI_sample_rate, FFT_length, 0,ORI_sample_rate/2, 1); // 1: 繪製amp
             }
         });
@@ -409,9 +456,6 @@ public class MainActivity extends AppCompatActivity
 
                 addFreqPoint_phase(tmp);
                 draw_fft_flag = false;  // 停止繪圖
-
-                Draw_amp = false;
-                Draw_phase = false;
             }
         }
     }
